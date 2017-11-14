@@ -2,32 +2,22 @@ import * as constants from '../constants/constants'
 import galleriesData  from './galleriesData'
 
 const initialState = {
-    galleriesData,
-    viewType: "gallery",
-    galleriesView: [
-        {
-            viewType: "gallery"
-        },
-        {
-            viewType: "gallery"
-        },
-        {
-            viewType: "gallery"
-        }
-    ]
+    galleriesData
 }
 
 export default function gallery(state = initialState, action) {
 
     switch (action.type) {
         case constants.SET_VIEW:
-            return { ...state, viewType: action.payload }
+            const newGalleryViewData = {...state.galleriesData}
+            const {galleryNameForView, viewType} = action.payload
+            newGalleryViewData[galleryNameForView]["viewType"] = viewType
+            return { ...state, galleriesData: newGalleryViewData }
         case constants.TOGGLE_MODAL:
-            debugger
-            const newGalleriesData = {...state.galleriesData}
-            const {galleryName, galleryItemIndex, visibilityValue} = action.payload
-            newGalleriesData[galleryName][galleryItemIndex].modalVisibility = visibilityValue
-            return { ...state, galleriesData: newGalleriesData }
+            const newGalleryModalData = {...state.galleriesData}
+            const {galleryNameForModal, galleryItemIndex, visibilityValue} = action.payload
+            newGalleryModalData[galleryNameForModal]["galleryItems"][galleryItemIndex].modalVisibility = visibilityValue
+            return { ...state, galleriesData: newGalleryModalData }
         default:
             return state;
     }

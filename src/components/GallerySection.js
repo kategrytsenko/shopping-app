@@ -5,26 +5,25 @@ import listViewIcon from '../images/icons/listViewIcon.svg'
 import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
 
 export default class GallerySection extends Component {
-    onListViewBtnClick(e) {
-        this.props.setView("list")
+    onListViewBtnClick(galleryName, viewType) {
+        this.props.setView(galleryName, viewType)
     }
-    onGalleryViewBtnClick(e) {
-        this.props.setView("gallery")
+    onGalleryViewBtnClick(galleryName, viewType) {
+        this.props.setView(galleryName, viewType)
     }
     render() {
-        console.log(this.props)
-        const { galleriesData, viewType, gallerySectionKey } = this.props
+        const { galleryData, gallerySectionKey } = this.props
 
-        return <div className={viewType=="gallery" ? "gallery__container gallery-view" : "gallery__container list-view"}>
+        return <div className={galleryData["viewType"]=="gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
             <div className="gallery__header">
-                <h1 className="gallery__title">{gallerySectionKey}</h1>
+                <h1 className="gallery__title">{galleryData["galleryTitle"]}</h1>
                 <div className="gallery-view__controls">
-                    <button className="icon_btn gallery-view__btn" onClick={this.onListViewBtnClick.bind(this)}><img src={listViewIcon} /></button>
-                    <button className="icon_btn gallery-view__btn" onClick={this.onGalleryViewBtnClick.bind(this)}><img src={galleryViewIcon} /></button>
+                    <button className="icon_btn gallery-view__btn" onClick={this.onListViewBtnClick.bind(this, gallerySectionKey, "list")}><img src={listViewIcon} /></button>
+                    <button className="icon_btn gallery-view__btn" onClick={this.onGalleryViewBtnClick.bind(this, gallerySectionKey, "gallery")}><img src={galleryViewIcon} /></button>
                 </div>
             </div>
             <div className="gallery-items__wrapper">
-                {galleriesData[gallerySectionKey].map((galleryItem, galleryItemIndex) => {
+                {galleryData["galleryItems"].map((galleryItem, galleryItemIndex) => {
                     return (
                         <GalleryItem key={galleryItemIndex}
                                      itemImgSrc={galleryItem.src}
@@ -41,8 +40,7 @@ export default class GallerySection extends Component {
 }
 
 GallerySection.propTypes = {
-    galleriesData: PropTypes.object.isRequired,
-    viewType: PropTypes.string.isRequired,
+    galleryData: PropTypes.object.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
     setView: PropTypes.func.isRequired,
     toggleModal: PropTypes.func.isRequired

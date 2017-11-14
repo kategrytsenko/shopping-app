@@ -22,112 +22,124 @@ import img_3_5 from '../images/3.5.jpg'
 import img_3_6 from '../images/3.6.jpg'
 
 const galleriesData = {
-    "gallery1": [
-        {
-            src: img_1_1,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        },
-        {
-            src: img_1_2,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        },
-        {
-            src: img_1_3,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        },
-        {
-            src: img_1_4,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        },
-        {
-            src: img_1_5,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        },
-        {
-            src: img_1_6,
-            text: "Lorem ipsum dolor sit amet",
-            modalVisibility: false
-        }
-    ],
-    "gallery2": [
-        {
-            src: img_2_1,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_2,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_3,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_4,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_5,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_6,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_7,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_2_8,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        }
-    ],
-    "gallery3": [
-        {
-            src: img_3_1,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_3_2,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_3_3,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_3_4,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_3_5,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        },
-        {
-            src: img_3_6,
-            text: "Lorem ipsum",
-            modalVisibility: false
-        }
-    ]
+    "gallery1": {
+        "galleryTitle": "Ut enim ad minim veniam",
+        "viewType": "gallery",
+        "galleryItems": [
+            {
+                src: img_1_1,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            },
+            {
+                src: img_1_2,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            },
+            {
+                src: img_1_3,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            },
+            {
+                src: img_1_4,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            },
+            {
+                src: img_1_5,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            },
+            {
+                src: img_1_6,
+                text: "Lorem ipsum dolor",
+                modalVisibility: false
+            }
+        ]
+    },
+    "gallery2": {
+        "galleryTitle": "Excepteur sint occaecat",
+        "viewType": "gallery",
+        "galleryItems": [
+            {
+                src: img_2_1,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_2,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_3,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_4,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_5,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_6,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_7,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_2_8,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            }
+        ]
+    },
+    "gallery3": {
+        "galleryTitle": "Duis aute irure dolor",
+        "viewType": "gallery",
+        "galleryItems": [
+            {
+                src: img_3_1,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_3_2,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_3_3,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_3_4,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_3_5,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            },
+            {
+                src: img_3_6,
+                text: "Lorem ipsum",
+                modalVisibility: false
+            }
+        ]
+    }
 }
 
 export default galleriesData;

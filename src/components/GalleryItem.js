@@ -8,8 +8,8 @@ export default class GalleryItem extends Component {
     }
     render() {
         const { itemImgSrc, itemText, galleryName, galleryItemIndex, modalVisibility } = this.props
-        return <div className="gallery-item__wrapper" onClick={this.onGalleryItemClick.bind(this, galleryName, galleryItemIndex, true)}>
-            <div className="gallery__item">
+        return <div className="gallery-item__wrapper">
+            <div className="gallery__item" onClick={this.onGalleryItemClick.bind(this, galleryName, galleryItemIndex, true)}>
                 <img src={itemImgSrc} />
                 <p>{itemText}</p>
             </div>

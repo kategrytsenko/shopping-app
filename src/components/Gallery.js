@@ -4,13 +4,11 @@ import GallerySection from '../components/GallerySection'
 
 export default class Gallery extends Component {
     render() {
-        console.log(this.props)
-        const { galleriesData, viewType } = this.props
+        const { galleriesData } = this.props
         return <div>
             {Object.keys(galleriesData).map((key) => {
                 return(
-                    <GallerySection viewType={viewType}
-                                    galleriesData={galleriesData}
+                    <GallerySection galleryData={galleriesData[key]}
                                     gallerySectionKey={key}
                                     setView={this.props.setView}
                                     toggleModal={this.props.toggleModal} />
@@ -22,7 +20,6 @@ export default class Gallery extends Component {
 
 Gallery.propTypes = {
     galleriesData: PropTypes.object.isRequired,
-    viewType: PropTypes.string.isRequired,
     setView: PropTypes.func.isRequired,
     toggleModal: PropTypes.func.isRequired
 }

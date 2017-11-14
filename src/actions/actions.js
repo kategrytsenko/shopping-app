@@ -1,17 +1,20 @@
 import * as actions from '../constants/constants'
 
-export function setView(viewType) {
+export function setView(galleryNameForView, viewType) {
     return {
         type: actions.SET_VIEW,
-        payload: viewType
+        payload: {
+            galleryNameForView,
+            viewType
+        }
     }
 }
 
-export function toggleModal (galleryName, galleryItemIndex, visibilityValue) {
+export function toggleModal (galleryNameForModal, galleryItemIndex, visibilityValue) {
     return {
         type: actions.TOGGLE_MODAL,
         payload: {
-            galleryName,
+            galleryNameForModal,
             galleryItemIndex,
             visibilityValue
         }
