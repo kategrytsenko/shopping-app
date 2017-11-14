@@ -8,7 +8,8 @@ class App extends Component {
     render() {
         const { gallery, galleryItem } = this.props
         const { setView, openModal, closeModal } = this.props.galleryActions
-
+        console.log(setView)
+        console.log(openModal)
         return <div>
             <Gallery {...gallery}
                             {...galleryItem}
@@ -21,8 +22,7 @@ class App extends Component {
 
 function mapStateToProps (state) {
     return {
-        gallery: state.gallery,
-        galleryItem: state.galleryItem
+        gallery: state.gallery
     }
 }
 

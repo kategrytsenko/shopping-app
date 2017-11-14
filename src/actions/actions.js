@@ -1,22 +1,28 @@
-import { SET_VIEW } from '../constants/constants'
-import { OPEN_MODAL } from '../constants/constants'
-import { CLOSE_MODAL } from '../constants/constants'
+import * as actions from '../constants/constants'
 
 export function setView(viewType) {
     return {
-        type: SET_VIEW,
+        type: actions.SET_VIEW,
         payload: viewType
     }
 }
 
-export function openModal() {
+export function openModal(galleryName, galleryItemIndex) {
     return {
-        type: OPEN_MODAL
+        type: actions.OPEN_MODAL,
+        payload: {
+            galleryName,
+            galleryItemIndex
+        }
     }
 }
 
-export function closeModal() {
+export function closeModal(galleryName, galleryItemIndex) {
     return {
-        type: CLOSE_MODAL
+        type: actions.CLOSE_MODAL,
+        payload: {
+            galleryName,
+            galleryItemIndex
+        }
     }
 }

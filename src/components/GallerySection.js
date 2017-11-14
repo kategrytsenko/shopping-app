@@ -12,6 +12,7 @@ export default class GallerySection extends Component {
         this.props.setView("gallery")
     }
     render() {
+        console.log(this.props)
         const { galleriesData, viewType, gallerySectionKey } = this.props
 
         return <div className={viewType=="gallery" ? "gallery__container gallery-view" : "gallery__container list-view"}>
@@ -28,6 +29,9 @@ export default class GallerySection extends Component {
                         <GalleryItem key={galleryItemIndex}
                                      itemImgSrc={galleryItem.src}
                                      itemText={galleryItem.text}
+                                     galleryName={gallerySectionKey}
+                                     galleryItemIndex={galleryItemIndex}
+                                     modalVisibility = {galleryItem.modalVisibility}
                                      openModal={this.props.openModal}
                                      closeModal={this.props.closeModal} />
                     )
@@ -41,5 +45,7 @@ GallerySection.propTypes = {
     galleriesData: PropTypes.object.isRequired,
     viewType: PropTypes.string.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
-    setView: PropTypes.func.isRequired
+    setView: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+    closeModal: PropTypes.func.isRequired
 }

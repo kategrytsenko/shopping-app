@@ -6,8 +6,8 @@ export default class Modal extends Component {
         this.props.closeModal()
     }
     render() {
-        const { itemImgSrc, itemText } = this.props
-        return <div className="modal">
+        const { itemImgSrc, itemText, modalVisibility } = this.props
+        return <div className={modalVisibility ? "modal visible" : "modal"}>
             <div className="modal__window">
                 <button className="modal__close-btn" onClick={this.onModalCloseClick.bind(this)}></button>
                 <div className="modal__item">
@@ -22,5 +22,6 @@ export default class Modal extends Component {
 Modal.propTypes = {
     itemImgSrc: PropTypes.string.isRequired,
     itemText: PropTypes.string.isRequired,
+    modalVisibility: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired
 }

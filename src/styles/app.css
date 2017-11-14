@@ -87,6 +87,9 @@ body {
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.modal.visible {
+    display: block;
+}
 .modal__window {
     height: 50vh;
     max-width: 500px;
