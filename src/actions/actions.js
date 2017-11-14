@@ -7,22 +7,13 @@ export function setView(viewType) {
     }
 }
 
-export function openModal(galleryName, galleryItemIndex) {
+export function toggleModal (galleryName, galleryItemIndex, visibilityValue) {
     return {
-        type: actions.OPEN_MODAL,
+        type: actions.TOGGLE_MODAL,
         payload: {
             galleryName,
-            galleryItemIndex
-        }
-    }
-}
-
-export function closeModal(galleryName, galleryItemIndex) {
-    return {
-        type: actions.CLOSE_MODAL,
-        payload: {
-            galleryName,
-            galleryItemIndex
+            galleryItemIndex,
+            visibilityValue
         }
     }
 }

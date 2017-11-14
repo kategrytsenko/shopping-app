@@ -19,8 +19,8 @@ export default class GallerySection extends Component {
             <div className="gallery__header">
                 <h1 className="gallery__title">{gallerySectionKey}</h1>
                 <div className="gallery-view__controls">
-                    <button className="gallery-view__btn" onClick={this.onListViewBtnClick.bind(this)}><img src={listViewIcon} /></button>
-                    <button className="gallery-view__btn" onClick={this.onGalleryViewBtnClick.bind(this)}><img src={galleryViewIcon} /></button>
+                    <button className="icon_btn gallery-view__btn" onClick={this.onListViewBtnClick.bind(this)}><img src={listViewIcon} /></button>
+                    <button className="icon_btn gallery-view__btn" onClick={this.onGalleryViewBtnClick.bind(this)}><img src={galleryViewIcon} /></button>
                 </div>
             </div>
             <div className="gallery-items__wrapper">
@@ -32,8 +32,7 @@ export default class GallerySection extends Component {
                                      galleryName={gallerySectionKey}
                                      galleryItemIndex={galleryItemIndex}
                                      modalVisibility = {galleryItem.modalVisibility}
-                                     openModal={this.props.openModal}
-                                     closeModal={this.props.closeModal} />
+                                     toggleModal={this.props.toggleModal} />
                     )
                 })}
             </div>
@@ -46,6 +45,5 @@ GallerySection.propTypes = {
     viewType: PropTypes.string.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
     setView: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
-    closeModal: PropTypes.func.isRequired
+    toggleModal: PropTypes.func.isRequired
 }

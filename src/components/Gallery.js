@@ -13,9 +13,7 @@ export default class Gallery extends Component {
                                     galleriesData={galleriesData}
                                     gallerySectionKey={key}
                                     setView={this.props.setView}
-                                    openModal={this.props.openModal}
-                                    closeModal={this.props.closeModal}
-                                    />
+                                    toggleModal={this.props.toggleModal} />
                 )
             } )}
         </div>
@@ -26,6 +24,5 @@ Gallery.propTypes = {
     galleriesData: PropTypes.object.isRequired,
     viewType: PropTypes.string.isRequired,
     setView: PropTypes.func.isRequired,
-    openModal: PropTypes.func.isRequired,
-    closeModal: PropTypes.func.isRequired
+    toggleModal: PropTypes.func.isRequired
 }
