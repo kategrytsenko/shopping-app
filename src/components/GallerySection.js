@@ -5,6 +5,9 @@ import listViewIcon from '../images/icons/listViewIcon.svg'
 import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
 
 export default class GallerySection extends Component {
+    componentDidMount() {
+        this.props.onSetRef(this.refs.gallery);
+    }
     onListViewBtnClick(galleryName, viewType) {
         this.props.setView(galleryName, viewType)
     }
@@ -14,7 +17,7 @@ export default class GallerySection extends Component {
     render() {
         const { galleryData, gallerySectionKey } = this.props
 
-        return <div className={galleryData["viewType"]=="gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
+        return <div ref="gallery" className={galleryData["viewType"]=="gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
             <div className="gallery__header">
                 <h1 className="gallery__title">{galleryData["galleryTitle"]}</h1>
                 <div className="gallery-view__controls">
@@ -43,5 +46,6 @@ GallerySection.propTypes = {
     galleryData: PropTypes.object.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
     setView: PropTypes.func.isRequired,
-    toggleModal: PropTypes.func.isRequired
+    toggleModal: PropTypes.func.isRequired,
+    onSetRef: PropTypes.func.isRequired
 }

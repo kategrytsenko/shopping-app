@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import closeModalIcon from '../images/icons/closeModalIcon.svg'
 
 
-export default class Modal extends Component {
-    onModalCloseClick(galleryName, galleryItemIndex, visibilityValue) {
-        this.props.toggleModal(galleryName, galleryItemIndex, visibilityValue)
+const Modal = function (props) {
+    function onModalCloseClick(galleryName, galleryItemIndex, visibilityValue) {
+        props.toggleModal(galleryName, galleryItemIndex, visibilityValue)
     }
-    render() {
-        const { itemImgSrc, itemText, galleryName, galleryItemIndex, modalVisibility } = this.props
-        return <div className={modalVisibility ? "modal visible" : "modal"}>
+    const { itemImgSrc, itemText, galleryName, galleryItemIndex, modalVisibility } = props
+    return (
+        <div className={modalVisibility ? "modal visible" : "modal"}>
             <div className="modal__window">
-                <button className="icon_btn modal__close-btn" onClick={this.onModalCloseClick.bind(this, galleryName, galleryItemIndex, false)}><img src={closeModalIcon} /></button>
+                <button className="icon_btn modal__close-btn" onClick={onModalCloseClick.bind(this, galleryName, galleryItemIndex, false)}><img src={closeModalIcon} /></button>
                 <div className="modal__item">
                     <img src={itemImgSrc} />
                     <p>{itemText}</p>
@@ -19,7 +19,8 @@ export default class Modal extends Component {
                 </div>
             </div>
         </div>
-    }
+    )
+
 }
 
 Modal.propTypes = {
@@ -30,3 +31,5 @@ Modal.propTypes = {
     modalVisibility: PropTypes.bool.isRequired,
     toggleModal: PropTypes.func.isRequired
 }
+
+export default Modal
