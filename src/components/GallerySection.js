@@ -9,24 +9,32 @@ export default class GallerySection extends Component {
         this.props.onSetRef(this.refs.gallery);
     }
     onListViewBtnClick(galleryName, viewType) {
-        this.props.setView(galleryName, viewType)
+        this.props.setView(galleryName, viewType);
     }
     onGalleryViewBtnClick(galleryName, viewType) {
-        this.props.setView(galleryName, viewType)
+        this.props.setView(galleryName, viewType);
     }
-    render() {
-        const { galleryData, gallerySectionKey } = this.props
 
-        return <div ref="gallery" className={galleryData["viewType"]=="gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
+    render() {
+        const { galleryData, gallerySectionKey, toggleModal } = this.props;
+
+        return <div ref="gallery"
+                    className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
             <div className="gallery__header">
-                <h1 className="gallery__title">{galleryData["galleryTitle"]}</h1>
+                <h1 className="gallery__title">{galleryData.galleryTitle}</h1>
                 <div className="gallery-view__controls">
-                    <button className="icon_btn gallery-view__btn" onClick={this.onListViewBtnClick.bind(this, gallerySectionKey, "list")}><img src={listViewIcon} /></button>
-                    <button className="icon_btn gallery-view__btn" onClick={this.onGalleryViewBtnClick.bind(this, gallerySectionKey, "gallery")}><img src={galleryViewIcon} /></button>
+                    <button className="icon_btn gallery-view__btn"
+                            onClick={this.onListViewBtnClick.bind(this, gallerySectionKey, "list")}>
+                            <img src={listViewIcon} />
+                    </button>
+                    <button className="icon_btn gallery-view__btn"
+                            onClick={this.onGalleryViewBtnClick.bind(this, gallerySectionKey, "gallery")}>
+                            <img src={galleryViewIcon} />
+                    </button>
                 </div>
             </div>
             <div className="gallery-items__wrapper">
-                {galleryData["galleryItems"].map((galleryItem, galleryItemIndex) => {
+                { galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {
                     return (
                         <GalleryItem key={galleryItemIndex}
                                      itemImgSrc={galleryItem.src}
@@ -34,7 +42,7 @@ export default class GallerySection extends Component {
                                      galleryName={gallerySectionKey}
                                      galleryItemIndex={galleryItemIndex}
                                      modalVisibility = {galleryItem.modalVisibility}
-                                     toggleModal={this.props.toggleModal} />
+                                     toggleModal={toggleModal} />
                     )
                 })}
             </div>

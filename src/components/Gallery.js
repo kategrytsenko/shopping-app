@@ -4,12 +4,12 @@ import GallerySection from '../components/GallerySection'
 
 export default class Gallery extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             gallerySection: {},
             galleryWrapper: {},
-            timer: null,
-        };
+            timer: null
+        }
     }
     componentDidMount() {
         this.setState({galleryWrapper: this.refs.galleryWrapper});
@@ -17,14 +17,14 @@ export default class Gallery extends Component {
     setGalleryRef(galleryRef) {
         this.setState({gallerySection: galleryRef});
     }
-    setScrollTop(e) {
+    setScrollTop() {
         if(this.state.timer !== null) {
             clearTimeout(this.state.timer);
         }
         function scrollTo(element, to, duration) {
             if (duration <= 0) return;
-            var difference = to - element.scrollTop;
-            var perTick = difference / duration * 10;
+            const difference = to - element.scrollTop;
+            const perTick = difference / duration * 10;
 
             setTimeout(function() {
                 element.scrollTop = element.scrollTop + perTick;
@@ -47,7 +47,7 @@ export default class Gallery extends Component {
             return null;
         }
         const toTop = this.state.currentScrollTop >= this.state.galleryWrapper.scrollTop;
-        this.setState({currentScrollTop: this.state.galleryWrapper.scrollTop})
+        this.setState({currentScrollTop: this.state.galleryWrapper.scrollTop});
         this.setState({timer: setTimeout(() => {
             const galleryHeight = this.state.gallerySection.offsetHeight;
             const scrollTop = this.state.galleryWrapper.scrollTop;
@@ -63,17 +63,17 @@ export default class Gallery extends Component {
     }
 
     render() {
-        const { galleriesData } = this.props
-        return <div onScroll={(e) => this.setScrollTop(e)} className="gallery__wrapper" ref="galleryWrapper">
+        const { galleriesData, setView, toggleModal } = this.props
+        return <div onScroll={ () => this.setScrollTop()} className="gallery__wrapper" ref="galleryWrapper">
             {Object.keys(galleriesData).map((key) => {
                 return(
                     <GallerySection galleryData={galleriesData[key]}
                                     gallerySectionKey={key}
-                                    setView={this.props.setView}
-                                    toggleModal={this.props.toggleModal}
+                                    setView={setView}
+                                    toggleModal={toggleModal}
                                     onSetRef={this.setGalleryRef.bind(this)} />
                 )
-            } )}
+            })}
         </div>
     }
 }

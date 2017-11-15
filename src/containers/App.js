@@ -5,19 +5,22 @@ import Gallery from '../components/Gallery'
 import * as galleryActions from '../actions/actions'
 
 class App extends Component {
+
     render() {
-        const { gallery, galleryItem } = this.props
-        const { setView, toggleModal } = this.props.galleryActions
-        return <div>
-            <Gallery {...gallery}
-                            {...galleryItem}
-                            setView={setView}
-                            toggleModal={toggleModal} />
-        </div>
+        const { gallery } = this.props;
+        const { setView, toggleModal } = this.props.galleryActions;
+
+        return (
+            <div>
+                <Gallery {...gallery}
+                         setView={setView}
+                         toggleModal={toggleModal} />
+            </div>
+        )
     }
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
     return {
         gallery: state.gallery
     }

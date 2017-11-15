@@ -140,6 +140,6 @@ const galleriesData = {
             }
         ]
     }
-}
+};
 
-export default galleriesData;
+export default galleriesData

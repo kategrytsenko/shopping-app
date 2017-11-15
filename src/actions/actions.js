@@ -10,7 +10,7 @@ export function setView(galleryNameForView, viewType) {
     }
 }
 
-export function toggleModal (galleryNameForModal, galleryItemIndex, visibilityValue) {
+export function toggleModal(galleryNameForModal, galleryItemIndex, visibilityValue) {
     return {
         type: actions.TOGGLE_MODAL,
         payload: {
