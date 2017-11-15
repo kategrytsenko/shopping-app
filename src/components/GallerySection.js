@@ -8,10 +8,7 @@ export default class GallerySection extends Component {
     componentDidMount() {
         this.props.onSetRef(this.refs.gallery);
     }
-    onListViewBtnClick(galleryName, viewType) {
-        this.props.setView(galleryName, viewType);
-    }
-    onGalleryViewBtnClick(galleryName, viewType) {
+    setViewBtnClick(galleryName, viewType) {
         this.props.setView(galleryName, viewType);
     }
 
@@ -24,11 +21,11 @@ export default class GallerySection extends Component {
                 <h1 className="gallery__title">{galleryData.galleryTitle}</h1>
                 <div className="gallery-view__controls">
                     <button className="icon_btn gallery-view__btn"
-                            onClick={this.onListViewBtnClick.bind(this, gallerySectionKey, "list")}>
+                            onClick={this.setViewBtnClick.bind(this, gallerySectionKey, "list")}>
                             <img src={listViewIcon} />
                     </button>
                     <button className="icon_btn gallery-view__btn"
-                            onClick={this.onGalleryViewBtnClick.bind(this, gallerySectionKey, "gallery")}>
+                            onClick={this.setViewBtnClick.bind(this, gallerySectionKey, "gallery")}>
                             <img src={galleryViewIcon} />
                     </button>
                 </div>
