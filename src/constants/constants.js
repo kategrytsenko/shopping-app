@@ -1,2 +1,6 @@
 export const SET_VIEW = 'SET_VIEW';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const TOGGLE_BASKET = 'TOGGLE_BASKET';
+export const ADD_ITEM_TO_BASKET = 'ADD_ITEM_TO_BASKET';
+export const REMOVE_ITEM_FROM_BASKET = 'REMOVE_ITEM_FROM_BASKET';
+// export const USER_MESSAGE = 'USER_MESSAGE';

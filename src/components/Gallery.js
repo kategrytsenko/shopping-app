@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import GallerySection from '../components/GallerySection'
+import Basket from '../components/Basket'
+import listViewIcon from '../images/icons/listViewIcon.svg'
+import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
+import basketIcon from '../images/icons/basketIcon.svg'
 
 export default class Gallery extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             gallerySection: {},
             galleryWrapper: {},
@@ -61,19 +65,61 @@ export default class Gallery extends Component {
             scrollTo(this.state.galleryWrapper, target, 300);
         }, 100)});
     }
-
+    setViewBtnClick(viewType) {
+        this.props.setView(viewType);
+    }
+    onBasketBtnClick(openModal) {
+        this.props.toggleBasket(openModal);
+    }
     render() {
-        const { galleriesData, setView, toggleModal } = this.props
+        const {
+            galleriesData,
+            setView,
+            toggleModal,
+            isBasketOpen,
+            basketItems,
+            basketItemsCount,
+            toggleBasket,
+            addItemToTheCart,
+            removeItemFromBasket
+        } = this.props;
+
         return <div onScroll={ () => this.setScrollTop()} className="gallery__wrapper" ref="galleryWrapper">
+            <div className="gallery__header">
+                <div>{basketItemsCount}</div>
+                <div className="gallery-view__controls">
+                    <button className="icon_btn gallery-view__btn"
+                            onClick={this.onBasketBtnClick.bind(this, true)}>
+                        <img src={basketIcon} />
+                    </button>
+                    <button className="icon_btn gallery-view__btn"
+                            onClick={this.setViewBtnClick.bind(this, "list")}>
+                        <img src={listViewIcon} />
+                    </button>
+                    <button className="icon_btn gallery-view__btn"
+                            onClick={this.setViewBtnClick.bind(this, "gallery")}>
+                        <img src={galleryViewIcon} />
+                    </button>
+                </div>
+            </div>
             {Object.keys(galleriesData).map((key) => {
                 return(
                     <GallerySection galleryData={galleriesData[key]}
                                     gallerySectionKey={key}
                                     setView={setView}
                                     toggleModal={toggleModal}
-                                    onSetRef={this.setGalleryRef.bind(this)} />
+                                    toggleBasket = {toggleBasket}
+                                    onSetRef={this.setGalleryRef.bind(this)}
+                                    addItemToTheCart = {addItemToTheCart}
+                                    removeItemFromBasket = {removeItemFromBasket} />
                 )
             })}
+            {isBasketOpen &&
+            <Basket basketItems = {basketItems}
+                    toggleBasket = {toggleBasket}
+                    toggleModal={toggleModal}
+                    addItemToTheCart = {addItemToTheCart}
+                    removeItemFromBasket = {removeItemFromBasket} />}
         </div>
     }
 }
@@ -81,5 +127,11 @@ export default class Gallery extends Component {
 Gallery.propTypes = {
     galleriesData: PropTypes.object.isRequired,
     setView: PropTypes.func.isRequired,
-    toggleModal: PropTypes.func.isRequired
-}
+    toggleModal: PropTypes.func.isRequired,
+    isBasketOpen: PropTypes.bool.isRequired,
+    basketItems: PropTypes.object.isRequired,
+    basketItemsCount: PropTypes.number.isRequired,
+    toggleBasket: PropTypes.func.isRequired,
+    addItemToTheCart: PropTypes.func.isRequired,
+    removeItemFromBasket: PropTypes.func.isRequired
+};

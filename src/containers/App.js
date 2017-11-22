@@ -7,14 +7,24 @@ import * as galleryActions from '../actions/actions'
 class App extends Component {
 
     render() {
-        const { gallery } = this.props;
-        const { setView, toggleModal } = this.props.galleryActions;
+        const { gallery, basket } = this.props;
+        const {
+            setView,
+            toggleModal,
+            toggleBasket,
+            addItemToTheCart,
+            removeItemFromBasket
+        } = this.props.galleryActions;
 
         return (
             <div>
                 <Gallery {...gallery}
-                         setView={setView}
-                         toggleModal={toggleModal} />
+                         {...basket}
+                         setView = {setView}
+                         toggleModal = {toggleModal}
+                         toggleBasket = {toggleBasket}
+                         addItemToTheCart = {addItemToTheCart}
+                         removeItemFromBasket = {removeItemFromBasket} />
             </div>
         )
     }
@@ -22,7 +32,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        gallery: state.gallery
+        gallery: state.gallery,
+        basket: state.basket
     }
 }
 

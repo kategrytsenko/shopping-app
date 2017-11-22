@@ -1,56 +1,48 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import GalleryItem from '../components/GalleryItem'
-import listViewIcon from '../images/icons/listViewIcon.svg'
-import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
 
 export default class GallerySection extends Component {
     componentDidMount() {
         this.props.onSetRef(this.refs.gallery);
     }
-    setViewBtnClick(galleryName, viewType) {
-        this.props.setView(galleryName, viewType);
-    }
 
     render() {
-        const { galleryData, gallerySectionKey, toggleModal } = this.props;
+        const {
+            galleryData,
+            gallerySectionKey,
+            toggleModal,
+            addItemToTheCart,
+            removeItemFromBasket
+        } = this.props;
 
-        return <div ref="gallery"
-                    className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
-            <div className="gallery__header">
+        return (
+            <div ref="gallery"
+                        className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
                 <h1 className="gallery__title">{galleryData.galleryTitle}</h1>
-                <div className="gallery-view__controls">
-                    <button className="icon_btn gallery-view__btn"
-                            onClick={this.setViewBtnClick.bind(this, gallerySectionKey, "list")}>
-                            <img src={listViewIcon} />
-                    </button>
-                    <button className="icon_btn gallery-view__btn"
-                            onClick={this.setViewBtnClick.bind(this, gallerySectionKey, "gallery")}>
-                            <img src={galleryViewIcon} />
-                    </button>
+                <div className="gallery-items__wrapper">
+                    { galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {
+                        return (
+                            <GalleryItem key={galleryItemIndex}
+                                         galleryItem = {galleryItem}
+                                         galleryName={gallerySectionKey}
+                                         galleryItemIndex={galleryItemIndex}
+                                         toggleModal={toggleModal}
+                                         addItemToTheCart = {addItemToTheCart}
+                                         removeItemFromBasket = {removeItemFromBasket} />
+                        )
+                    })}
                 </div>
             </div>
-            <div className="gallery-items__wrapper">
-                { galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {
-                    return (
-                        <GalleryItem key={galleryItemIndex}
-                                     itemImgSrc={galleryItem.src}
-                                     itemText={galleryItem.text}
-                                     galleryName={gallerySectionKey}
-                                     galleryItemIndex={galleryItemIndex}
-                                     modalVisibility = {galleryItem.modalVisibility}
-                                     toggleModal={toggleModal} />
-                    )
-                })}
-            </div>
-        </div>
+        )
     }
 }
 
 GallerySection.propTypes = {
     galleryData: PropTypes.object.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
-    setView: PropTypes.func.isRequired,
     toggleModal: PropTypes.func.isRequired,
-    onSetRef: PropTypes.func.isRequired
-}
+    onSetRef: PropTypes.func.isRequired,
+    addItemToTheCart: PropTypes.func.isRequired,
+    removeItemFromBasket: PropTypes.func.isRequired
+};
