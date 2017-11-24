@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Modal from '../components/Modal'
 import addToTheBasket from '../images/icons/addToTheBasket.svg'
@@ -26,17 +26,17 @@ const GalleryItem = function(props) {
     return (
         <div className = "gallery-item__wrapper">
             <div className="gallery__item">
-                <img src = {galleryItem.src}
+                <img src = {galleryItem.src} alt={galleryName + "item"}
                      onClick = {() => onGalleryItemClick(galleryName, galleryItemIndex, true)} />
                 <p>{galleryItem.text}</p>
                 <div className="gallery-item__controls">
-                    <button className="icon_btn gallery-item__btn"
+                    <button className="icon_btn gallery-item__btn"  alt="Add to the cart"
                             onClick={() => addToTheCartBtnClick(galleryName, galleryItem)}>
-                        <img src={addToTheBasket} />
+                        <img src={addToTheBasket} alt="Add to the cart" />
                     </button>
-                    <button className="icon_btn gallery-item__btn"
+                    <button className="icon_btn gallery-item__btn" alt="Remove from the cart"
                             onClick={() => removeFromCartBtnClick(galleryName, galleryItem)}>
-                        <img src={removeFromBasket} />
+                        <img src={removeFromBasket} alt="Remove from the cart" />
                     </button>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import GalleryItem from '../components/GalleryItem'
 import closeModalIcon from '../images/icons/closeModalIcon.svg'
@@ -20,7 +20,7 @@ const Basket = function (props) {
             <div className="basket__window">
                 <button className="icon_btn window__close-btn"
                         onClick={() => onBasketCloseClick(false)}>
-                    <img src={closeModalIcon} />
+                    <img src={closeModalIcon} alt="Close modal" />
                 </button>
                 <div className="basket-items__wrapper">
                     {Object.keys(basketItems).map((key) => {

@@ -2,6 +2,22 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import GalleryItem from '../components/GalleryItem'
 
+// class SwipeComponent extends React.Component {
+//
+//
+//     render() {
+//         return (
+//             <Swipeable
+//                 onSwiping={this.swiping}
+//                 onSwipingLeft={this.swipingLeft}
+//                 onSwiped={this.swiped}
+//                 onSwipedUp={this.swipedRight} >
+//                 You can swipe here!
+//             </Swipeable>
+//         )
+//     }
+// }
+
 export default class GallerySection extends Component {
     componentDidMount() {
         this.props.onSetRef(this.refs.gallery);
@@ -18,7 +34,7 @@ export default class GallerySection extends Component {
 
         return (
             <div ref="gallery"
-                        className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
+                 className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
                 <h1 className="gallery__title">{galleryData.galleryTitle}</h1>
                 <div className="gallery-items__wrapper">
                     { galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {

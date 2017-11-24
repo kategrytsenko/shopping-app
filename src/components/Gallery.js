@@ -5,6 +5,7 @@ import Basket from '../components/Basket'
 import listViewIcon from '../images/icons/listViewIcon.svg'
 import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
 import basketIcon from '../images/icons/basketIcon.svg'
+import Swipeable from 'react-swipeable'
 
 export default class Gallery extends Component {
     constructor(props) {
@@ -71,6 +72,23 @@ export default class Gallery extends Component {
     onBasketBtnClick(openModal) {
         this.props.toggleBasket(openModal);
     }
+
+    swiping(e, deltaX, deltaY, absX, absY, velocity) {
+        console.log("You're Swiping...", e, deltaX, deltaY, absX, absY, velocity)
+    }
+
+    swipingLeft(e, absX) {
+        console.log("You're Swiping to the Left...", e, absX)
+    }
+
+    swiped(e, deltaX, deltaY, isFlick, velocity) {
+        console.log("You Swiped...", e, deltaX, deltaY, isFlick, velocity)
+    }
+
+    swipedUp(e, deltaY, isFlick) {
+        console.log("You Swiped Up...", e, deltaY, isFlick)
+    }
+
     render() {
         const {
             galleriesData,
@@ -90,30 +108,38 @@ export default class Gallery extends Component {
                 <div className="gallery-view__controls">
                     <button className="icon_btn gallery-view__btn"
                             onClick={this.onBasketBtnClick.bind(this, true)}>
-                        <img src={basketIcon} />
+                        <img src={basketIcon} alt="Open basket" />
                     </button>
                     <button className="icon_btn gallery-view__btn"
                             onClick={this.setViewBtnClick.bind(this, "list")}>
-                        <img src={listViewIcon} />
+                        <img src={listViewIcon} alt="Set list view" />
                     </button>
                     <button className="icon_btn gallery-view__btn"
                             onClick={this.setViewBtnClick.bind(this, "gallery")}>
-                        <img src={galleryViewIcon} />
+                        <img src={galleryViewIcon} alt="Set gallery view" />
                     </button>
                 </div>
             </div>
-            {Object.keys(galleriesData).map((key) => {
-                return(
-                    <GallerySection galleryData={galleriesData[key]}
-                                    gallerySectionKey={key}
-                                    setView={setView}
-                                    toggleModal={toggleModal}
-                                    toggleBasket = {toggleBasket}
-                                    onSetRef={this.setGalleryRef.bind(this)}
-                                    addItemToTheCart = {addItemToTheCart}
-                                    removeItemFromBasket = {removeItemFromBasket} />
-                )
-            })}
+
+                {Object.keys(galleriesData).map((key) => {
+                    return(
+                        <Swipeable
+                            onSwiping={this.swiping}
+                            onSwipingLeft={this.swipingLeft}
+                            onSwiped={this.swiped}
+                            onSwipedUp={this.swipedRight} >
+                        <GallerySection galleryData={galleriesData[key]}
+                                        gallerySectionKey={key}
+                                        setView={setView}
+                                        toggleModal={toggleModal}
+                                        toggleBasket = {toggleBasket}
+                                        onSetRef={this.setGalleryRef.bind(this)}
+                                        addItemToTheCart = {addItemToTheCart}
+                                        removeItemFromBasket = {removeItemFromBasket} />
+                        </Swipeable>
+                    )
+                })}
+
             {isBasketOpen &&
             <Basket basketItems = {basketItems}
                     toggleBasket = {toggleBasket}

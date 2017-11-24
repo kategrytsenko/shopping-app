@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import closeModalIcon from '../images/icons/closeModalIcon.svg'
 import addToTheBasket from '../images/icons/addToTheBasket.svg'
@@ -28,19 +28,19 @@ const Modal = function (props) {
             <div className="modal__window">
                 <button className="icon_btn window__close-btn"
                         onClick={() => onModalCloseClick( galleryName, galleryItemIndex, false)}>
-                    <img src={closeModalIcon} />
+                    <img src={closeModalIcon} alt="CLose modal" />
                 </button>
                 <div className="modal__item">
-                    <img src={galleryItem.src} />
+                    <img src={galleryItem.src} alt={galleryName + "item"} />
                     <p>{galleryItem.text}</p>
                     <div className="gallery-item__controls">
                         <button className="icon_btn gallery-item__btn"
                                 onClick={() => addToTheCartBtnClick(galleryName, galleryItem)}>
-                            <img src={addToTheBasket} />
+                            <img src={addToTheBasket} alt="Add to the cart" />
                         </button>
                         <button className="icon_btn gallery-item__btn"
                                 onClick={() => removeFromCartBtnClick(galleryName, galleryItem)}>
-                            <img src={removeFromBasket} />
+                            <img src={removeFromBasket} alt="Remove from the cart" />
                         </button>
                     </div>
                 </div>

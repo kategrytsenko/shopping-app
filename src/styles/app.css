@@ -92,15 +92,18 @@ body {
 }
 
 /*LIST VIEW STYLES*/
-.list-view.gallery__container.gallery1 {
-    background-color: #F09D4E;
-}
-.list-view.gallery__container.gallery2 {
-    background-color: #CE498E;
-}
-.list-view.gallery__container.gallery3 {
-    background-color: #94CEE6;
-}
+/*.list-view.gallery__container.gallery1 {*/
+    /*background-color: #F09D4E;*/
+/*}*/
+/*.list-view.gallery__container.gallery2 {*/
+    /*background-color: #CE498E;*/
+/*}*/
+/*.list-view.gallery__container.gallery3 {*/
+    /*background-color: #94CEE6;*/
+/*}*/
+/*.list-view .gallery__title {*/
+    /*background-color: transparent;*/
+/*}*/
 .list-view .gallery-items__wrapper {
     flex-direction: column;
     justify-content: space-around;
