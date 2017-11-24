@@ -6,6 +6,10 @@ const initialState = {
     basketItemsCount: 0
 };
 
+function isInArray(galleryItemForAdding, element) {
+    return (galleryItemForAdding.id === element.id);
+}
+
 export default function basket(state = initialState, action) {
 
     switch (action.type) {
@@ -18,7 +22,13 @@ export default function basket(state = initialState, action) {
             if (!newBasketItemsForAdding.hasOwnProperty(galleryNameForAdding)) {
                 newBasketItemsForAdding[galleryNameForAdding] = [];
             }
-            newBasketItemsForAdding[galleryNameForAdding].push(galleryItemForAdding);
+
+            if(newBasketItemsForAdding[galleryNameForAdding].find((element) => isInArray(galleryItemForAdding, element))) {
+                galleryItemForAdding.count += 1;
+            } else {
+                galleryItemForAdding.count = 1;
+                newBasketItemsForAdding[galleryNameForAdding].push(galleryItemForAdding);
+            }
 
             return { ...state, basketItems: newBasketItemsForAdding, basketItemsCount: basketItemsCountAfterAdding + 1 };
         case constants.REMOVE_ITEM_FROM_BASKET:
@@ -29,7 +39,12 @@ export default function basket(state = initialState, action) {
                 if (newBasketItems.hasOwnProperty(key) && key === galleryNameForRemoving) {
                     let galleryItemsInBasket = newBasketItems[galleryNameForRemoving];
                     let indexOfItem = galleryItemsInBasket.findIndex(item => item.id === galleryItemForRemoving.id);
-                    galleryItemsInBasket.splice(indexOfItem, 1);
+
+                    galleryItemForRemoving.count -= 1;
+                    if(!galleryItemForRemoving.count) {
+                        galleryItemsInBasket.splice(indexOfItem, 1);
+                    }
+
                     newBasketItems[galleryNameForRemoving] = galleryItemsInBasket;
                 }
             }
