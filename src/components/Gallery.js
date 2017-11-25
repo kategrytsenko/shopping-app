@@ -5,7 +5,7 @@ import Basket from '../components/Basket'
 import listViewIcon from '../images/icons/listViewIcon.svg'
 import galleryViewIcon from '../images/icons/galleryViewIcon.svg'
 import basketIcon from '../images/icons/basketIcon.svg'
-import Swipeable from 'react-swipeable'
+import SwipeableViews from 'react-swipeable-views'
 
 export default class Gallery extends Component {
     constructor(props) {
@@ -73,22 +73,6 @@ export default class Gallery extends Component {
         this.props.toggleBasket(openModal);
     }
 
-    swiping(e, deltaX, deltaY, absX, absY, velocity) {
-        console.log("You're Swiping...", e, deltaX, deltaY, absX, absY, velocity)
-    }
-
-    swipingLeft(e, absX) {
-        console.log("You're Swiping to the Left...", e, absX)
-    }
-
-    swiped(e, deltaX, deltaY, isFlick, velocity) {
-        console.log("You Swiped...", e, deltaX, deltaY, isFlick, velocity)
-    }
-
-    swipedUp(e, deltaY, isFlick) {
-        console.log("You Swiped Up...", e, deltaY, isFlick)
-    }
-
     render() {
         const {
             galleriesData,
@@ -121,13 +105,9 @@ export default class Gallery extends Component {
                 </div>
             </div>
 
+            <SwipeableViews>
                 {Object.keys(galleriesData).map((key) => {
                     return(
-                        <Swipeable
-                            onSwiping={this.swiping}
-                            onSwipingLeft={this.swipingLeft}
-                            onSwiped={this.swiped}
-                            onSwipedUp={this.swipedRight} >
                         <GallerySection galleryData={galleriesData[key]}
                                         gallerySectionKey={key}
                                         setView={setView}
@@ -136,9 +116,10 @@ export default class Gallery extends Component {
                                         onSetRef={this.setGalleryRef.bind(this)}
                                         addItemToTheCart = {addItemToTheCart}
                                         removeItemFromBasket = {removeItemFromBasket} />
-                        </Swipeable>
+
                     )
                 })}
+            </SwipeableViews>
 
             {isBasketOpen &&
             <Basket basketItems = {basketItems}
