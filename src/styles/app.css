@@ -4,6 +4,10 @@ body {
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
+.react-swipeable-view-container::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
 .gallery__wrapper {
     height: 100vh;
     overflow: auto;
@@ -54,7 +58,7 @@ body {
 }
 .gallery-item__wrapper {
     width: 22%;
-    height: 30vh;
+    height: 40vh;
 }
 .gallery__item {
     display: flex;

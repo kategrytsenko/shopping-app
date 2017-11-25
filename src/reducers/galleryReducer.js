@@ -21,8 +21,6 @@ export default function gallery(state = initialState, action) {
             newGalleryModalData[galleryNameForModal].galleryItems[galleryItemIndex].modalVisibility = visibilityValue;
 
             return { ...state, galleriesData: newGalleryModalData };
-        // case constants.USER_MESSAGE:
-        //
         default:
             return state;
     }
