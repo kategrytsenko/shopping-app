@@ -10,17 +10,17 @@ export default function gallery(state = initialState, action) {
     switch (action.type) {
         case constants.SET_VIEW:
             const newGalleryViewData = {...state.galleriesData};
-            for (let key in newGalleryViewData) {
+            Object.keys(newGalleryViewData).forEach((key) => {
                 newGalleryViewData[key].viewType = action.payload;
-            }
+            });
 
-            return { ...state, galleriesData: newGalleryViewData };
+            return {galleriesData: newGalleryViewData};
         case constants.TOGGLE_MODAL:
-            const newGalleryModalData = { ...state.galleriesData };
+            const newGalleryModalData = {...state.galleriesData};
             const {galleryNameForModal, galleryItemIndex, visibilityValue} = action.payload;
             newGalleryModalData[galleryNameForModal].galleryItems[galleryItemIndex].modalVisibility = visibilityValue;
 
-            return { ...state, galleriesData: newGalleryModalData };
+            return {galleriesData: newGalleryModalData};
         default:
             return state;
     }

@@ -22,7 +22,6 @@ export default function basket(state = initialState, action) {
             if (!newBasketItemsForAdding.hasOwnProperty(galleryNameForAdding)) {
                 newBasketItemsForAdding[galleryNameForAdding] = [];
             }
-
             if(newBasketItemsForAdding[galleryNameForAdding].find((element) => isInArray(galleryItemForAdding, element))) {
                 galleryItemForAdding.count += 1;
             } else {
@@ -35,20 +34,18 @@ export default function basket(state = initialState, action) {
             const newBasketItems = {...state.basketItems};
             const {galleryNameForRemoving, galleryItemForRemoving} = action.payload;
             let basketItemsCountAfterRemoving = state.basketItemsCount;
-            for (let key in newBasketItems) {
+
+            Object.keys(newBasketItems).forEach((key) => {
                 if (newBasketItems.hasOwnProperty(key) && key === galleryNameForRemoving) {
                     let galleryItemsInBasket = newBasketItems[galleryNameForRemoving];
                     let indexOfItem = galleryItemsInBasket.findIndex(item => item.id === galleryItemForRemoving.id);
-
                     galleryItemForRemoving.count -= 1;
                     if(!galleryItemForRemoving.count) {
                         galleryItemsInBasket.splice(indexOfItem, 1);
                     }
-
                     newBasketItems[galleryNameForRemoving] = galleryItemsInBasket;
                 }
-            }
-
+            });
             if (basketItemsCountAfterRemoving !== 0) {
                 basketItemsCountAfterRemoving--;
             }

@@ -38,7 +38,7 @@ const GalleryItem = function(props) {
                             onClick={() => removeFromCartBtnClick(galleryName, galleryItem)}>
                         <img src={removeFromBasket} alt="Remove from the cart" />
                     </button>
-                    {galleryItem.count ? galleryItem.count : ""}
+                    {galleryItem.count || ""}
                 </div>
             </div>
             {galleryItem.modalVisibility &&

@@ -13,10 +13,13 @@ export default class GallerySection extends Component {
         } = this.props;
 
         return (
-            <div className={galleryData.viewType === "gallery" ? "gallery__container gallery-view " + gallerySectionKey : "gallery__container list-view " + gallerySectionKey}>
+            <div className={
+                galleryData.viewType === "gallery"
+                    ? "gallery__container gallery-view " + gallerySectionKey
+                    : "gallery__container list-view " + gallerySectionKey}>
                 <h1 className="gallery__title">{galleryData.galleryTitle}</h1>
                 <div className="gallery-items__wrapper">
-                    { galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {
+                    {galleryData.galleryItems.map((galleryItem, galleryItemIndex) => {
                         return (
                             <GalleryItem key={galleryItemIndex}
                                          galleryItem = {galleryItem}
@@ -37,7 +40,6 @@ GallerySection.propTypes = {
     galleryData: PropTypes.object.isRequired,
     gallerySectionKey: PropTypes.string.isRequired,
     toggleModal: PropTypes.func.isRequired,
-    onSetRef: PropTypes.func.isRequired,
     addItemToTheCart: PropTypes.func.isRequired,
     removeItemFromBasket: PropTypes.func.isRequired
 };

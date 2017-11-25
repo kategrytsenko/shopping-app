@@ -46,11 +46,11 @@ export default class Gallery extends Component {
                     </button>
                 </div>
             </div>
-
             <SwipeableViews enableMouseEvents>
-                {Object.keys(galleriesData).map((key) => {
+                {Object.keys(galleriesData).map((key, index) => {
                     return(
-                        <GallerySection galleryData={galleriesData[key]}
+                        <GallerySection key={index}
+                                        galleryData={galleriesData[key]}
                                         gallerySectionKey={key}
                                         setView={setView}
                                         toggleModal={toggleModal}
@@ -61,7 +61,6 @@ export default class Gallery extends Component {
                     )
                 })}
             </SwipeableViews>
-
             {isBasketOpen &&
             <Basket basketItems = {basketItems}
                     toggleBasket = {toggleBasket}
